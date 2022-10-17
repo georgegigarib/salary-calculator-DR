@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+        <title>Login 05</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&amp;display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet"
+            href="https://preview.colorlib.com/theme/bootstrap/login-form-15/css/A.style.css.pagespeed.cf.AxmTFBrhes.css">
+    </head>
+<body>
+    <div id="main">
+        <section class="ftco-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-5">
+                        <div class="wrap">
+                            <div class="login-wrap p-4 p-md-5">
+                                <div class="d-flex">
+                                    <div class="w-100">
+                                        <h3 class="mb-4">Salary Calculator</h3>
+                                    </div>
+                                    <div class="w-100">
+                                        </p>
+                                    </div>
+                                </div>
+                                <form action="#" class="signin-form">
+                                    <div class="form-group mt-4">
+                                        <input type="number" class="form-control" v-model="salary">
+                                        <label class="form-control-placeholder">Monthly Salary</label>
+                                    </div>
+                                    <div class="form-group mt-4">
+                                        <input type="number" class="form-control" v-model="bonification">
+                                        <label class="form-control-placeholder">Bonifications</label>
+                                    </div>
+                                    <div class="form-group mt-4">
+                                        <input id="password-field" type="number" class="form-control" v-model="extra">
+                                        <label class="form-control-placeholder">Extra Hours</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <p style="text-align: right;">Health insurance</p>
+                                        <p style="text-align:  right; margin-top: -20px;" class=""
+                                            :class="{'redtext': colourChange(insurance)}">
+                                            {{(insurance = -salary*0.0304).toFixed(2)}}</p>
+                                        <hr>
+                                        <p style="text-align: right;">AFP</p>
+                                        <p style="text-align: right; margin-top: -20px;" class=""
+                                            :class="{'redtext': colourChange(afp)}">
+                                            {{(afp = -salary*0.0287).toFixed(2)}}</p>
+                                        <hr>
+                                        <p style="text-align: right;">Taxes</p>
+                                        <p style="text-align: right; margin-top: -20px;" class=""
+                                            :class="{'redtext': colourChange(-calctaxes)}">{{
+                                        -calctaxes.toFixed(2)
+                                    }}</p>
+                                        <hr>
+                                        <p style="text-align: center;">Final Salary</p>
+                                        <h3 style="text-align: center; margin-top: -20px;">{{
+                                        (Number(salary) + Number(bonification) + Number(extra) + afp + insurance - taxes).toFixed(2)
+                                    }}</h3>
+                                    </div>
+                                    <div class="form-group d-md-flex">
+                                        <div class="w-50 text-left">
+                                            </label>
+                                        </div>
+                                    </div>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: '#main',
+        data: {
+            salary: 0,
+            bonification: 0,
+            extra: 0,
+            insurance: 0,
+            afp: 0,
+            taxes: 0
+        },
+        methods: {
+            colourChange(num) {
+                if (num < 0) return true
+            }
+        },
+        computed: {
+            calctaxes() {
+                let salary = this.salary
+                if (salary > 34685 && salary <= 52027.4175) {
+                    return this.taxes = salary * 0.15
+                }
+                if (salary > 52027.4175 && salary <= 72260.2508333) {
+                    return this.taxes = salary * 0.20
+                }
+                if (salary > 72260.2508333) {
+                    return this.taxes = salary * 0.25
+                }
+                return this.taxes = 0
+            }
+        }
+    })
+</script>
+</html>
