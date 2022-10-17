@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <head>
-        <title>Login 05</title>
+        <title>Salary Calculator</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&amp;display=swap" rel="stylesheet">
@@ -29,15 +29,15 @@
                                 <form action="#" class="signin-form">
                                     <div class="form-group mt-4">
                                         <input type="number" class="form-control" v-model="salary">
-                                        <label class="form-control-placeholder">Monthly Salary</label>
+                                        <label class="form-control-placeholder" min=0>Monthly Salary</label>
                                     </div>
                                     <div class="form-group mt-4">
                                         <input type="number" class="form-control" v-model="bonification">
-                                        <label class="form-control-placeholder">Bonifications</label>
+                                        <label class="form-control-placeholder" min=0>Bonifications</label>
                                     </div>
                                     <div class="form-group mt-4">
                                         <input id="password-field" type="number" class="form-control" v-model="extra">
-                                        <label class="form-control-placeholder">Extra Hours</label>
+                                        <label class="form-control-placeholder" min=0>Extra Hours</label>
                                     </div>
                                     <div class="form-group">
                                         <p style="text-align: right;">Health insurance</p>
